@@ -21,6 +21,11 @@ add_library("azrtos::${PROJECT_NAME}" ALIAS ${PROJECT_NAME})
 # Define any required dependencies between this library and others
 target_link_libraries(${PROJECT_NAME} PUBLIC "azrtos::threadx")
 
+if(DEFINED THREADX_ADD_EXECUTION_PROFILE_KIT_UTILITY)
+    message(STATUS "THREADX_ADD_EXECUTION_PROFILE_KIT_UTILITY - defined")
+    target_link_libraries(${PROJECT_NAME} PUBLIC "azrtos::execution_profile_kit")
+endif()
+
 if(NXD_ENABLE_FILE_SERVERS)
     message(STATUS "NXD_ENABLE_FILE_SERVERS - defined")
     target_link_libraries(${PROJECT_NAME} PUBLIC "azrtos::filex")
