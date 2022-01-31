@@ -189,6 +189,7 @@ VOID           *rounded_pool_start;    /* Rounded stating address     */
 
     /* Save the remaining information in the pool control packet.  */
     pool_ptr -> nx_packet_pool_available =  packets;
+    pool_ptr -> nx_packet_pool_min_available =  packets;
     pool_ptr -> nx_packet_pool_total =      packets;
 
     /* Set the packet pool available list.  */
