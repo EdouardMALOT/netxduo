@@ -1648,6 +1648,8 @@ typedef struct NX_PACKET_POOL_STRUCT
     /* Define the number of available memory packets in the pool.  */
     ULONG       nx_packet_pool_available;
 
+    ULONG       nx_packet_pool_min_available;
+
     /* Save the initial number of blocks.  */
     ULONG       nx_packet_pool_total;
 
