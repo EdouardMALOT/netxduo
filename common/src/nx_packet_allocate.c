@@ -113,6 +113,11 @@ ULONG                  trace_timestamp;
         /* Yes, a packet is available.  Decrement the available count.  */
         pool_ptr -> nx_packet_pool_available--;
 
+        if(pool_ptr -> nx_packet_pool_available < pool_ptr -> nx_packet_pool_min_available)
+        {
+            pool_ptr -> nx_packet_pool_min_available = pool_ptr -> nx_packet_pool_available;
+        }
+
         /* Pickup the current packet pointer.  */
         work_ptr =  pool_ptr -> nx_packet_pool_available_list;
 
