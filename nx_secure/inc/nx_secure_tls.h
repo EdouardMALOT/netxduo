@@ -505,6 +505,7 @@ typedef struct NX_SECURE_VERSIONS_LIST_STRUCT
 #define TLS_RSA_WITH_AES_128_GCM_SHA256                    0x009C
 #define TLS_RSA_WITH_AES_256_GCM_SHA384                    0x009D
 #define TLS_PSK_WITH_AES_128_CBC_SHA256                    0x00AE
+#define TLS_PSK_WITH_AES_128_GCM_SHA256                    0x00A8
 #define TLS_PSK_WITH_AES_128_CCM_8                         0xC0A8
 
 /* EC Ciphersuites. */
