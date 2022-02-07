@@ -443,6 +443,10 @@ UINT            status;
 /*                                                                        */
 /**************************************************************************/
 
+extern const USHORT nx_crypto_ecc_supported_groups[];
+extern const NX_CRYPTO_METHOD *nx_crypto_ecc_curves[];
+extern const UINT nx_crypto_ecc_supported_groups_size;
+
 /* Setup TLS state per server session. */
 UINT _nx_tcpserver_tls_setup(NX_TCPSERVER *server_ptr, const NX_SECURE_TLS_CRYPTO *crypto_table,
                              VOID *metadata_buffer, ULONG metadata_size, UCHAR* packet_buffer, UINT packet_buffer_size, NX_SECURE_X509_CERT *identity_certificate,
@@ -487,6 +491,15 @@ UINT status;
         tls_session =  &(server_ptr -> nx_tcpserver_sessions[i].nx_tcp_session_tls_session);
         status = nx_secure_tls_session_create(tls_session, crypto_table, session_metadata, session_metadata_size);
 
+        if(status != NX_SUCCESS)
+        {
+            return(status);
+        }
+
+        status = nx_secure_tls_ecc_initialize(tls_session,
+                                              nx_crypto_ecc_supported_groups,
+                                              nx_crypto_ecc_supported_groups_size,
+                                              nx_crypto_ecc_curves);
         if(status != NX_SUCCESS)
         {
             return(status);
