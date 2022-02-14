@@ -72,6 +72,13 @@ else()
     message(STATUS "Using custom nx_user.h file from ${NX_USER_FILE}")
 endif()
 configure_file(${NX_USER_FILE} ${CUSTOM_INC_DIR}/nx_user.h COPYONLY)
+
+# If the user provided an override, copy it to the custom directory
+if ( NX_SECURE_INCLUDE_USER_DEFINE_FILE)
+    message(STATUS "Using nx_secure_user.h file from ${NX_SECURE_INCLUDE_USER_DEFINE_FILE}")
+    configure_file(${NX_SECURE_INCLUDE_USER_DEFINE_FILE} ${CUSTOM_INC_DIR}/nx_secure_user.h COPYONLY)
+endif()
+
 target_include_directories(${PROJECT_NAME} 
     PUBLIC 
     ${CUSTOM_INC_DIR}
