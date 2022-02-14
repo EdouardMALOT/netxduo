@@ -159,6 +159,11 @@ ULONG      fragment_length;
     }
 
     /* Finally, send the record off to the client. */
+#ifdef NX_SECURE_DTLS_PSK_SHORT_SERVER_HANDSHAKE
+    if(include_in_finished == PSK_DO_NOT_SEND_RECORD) {
+        return NX_SUCCESS;
+    }
+#endif
     status = _nx_secure_dtls_send_record(dtls_session, send_packet, NX_SECURE_TLS_HANDSHAKE, wait_option);
 
     if (status != NX_SUCCESS)
