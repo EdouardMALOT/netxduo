@@ -23,6 +23,7 @@
 #define NX_SECURE_SOURCE_CODE
 
 #include "nx_secure_dtls.h"
+#include "nx_packet.h"
 
 
 #ifdef NX_SECURE_ENABLE_DTLS
@@ -380,6 +381,7 @@ UCHAR                                *fragment_buffer;
         return(NX_SECURE_TLS_HANDSHAKE_FAILURE);
         break;
     case NX_SECURE_TLS_SERVER_STATE_SEND_HELLO_VERIFY:
+        #ifndef NX_SECURE_DTLS_PSK_SHORT_SERVER_HANDSHAKE
         /* We have received and processed a client hello. Now respond to the client appropriately. */
         status = _nx_secure_dtls_allocate_handshake_packet(dtls_session, packet_pool, &send_packet, wait_option);
 
@@ -404,7 +406,78 @@ UCHAR                                *fragment_buffer;
         }
 
         break;
+        #endif
     case NX_SECURE_TLS_SERVER_STATE_SEND_HELLO:
+        #ifdef  NX_SECURE_DTLS_PSK_SHORT_SERVER_HANDSHAKE
+            if(tls_session -> nx_secure_tls_session_ciphersuite -> nx_secure_tls_public_auth -> nx_crypto_algorithm == NX_CRYPTO_KEY_EXCHANGE_PSK)
+            {
+                UCHAR                                 *remind_prepend;
+                uint32_t                              save_packet_length = 0;
+
+                //Allocate buffer
+                //---------------
+                /* We have received and processed a client hello. Now respond to the client appropriately. */
+                if (_nx_secure_dtls_allocate_handshake_packet(dtls_session, packet_pool, &send_packet, wait_option) != NX_SUCCESS) {
+                    break;
+                }
+
+                //Add SERVER HELLO
+                //----------------
+                _nx_secure_dtls_send_serverhello(dtls_session, send_packet);
+                if (_nx_secure_dtls_send_handshake_record(dtls_session, send_packet, NX_SECURE_TLS_SERVER_HELLO, wait_option, PSK_DO_NOT_SEND_RECORD) != NX_SUCCESS) {
+                    break;
+                }
+
+                //ADD KEY EXCHANGE
+                //----------------
+                remind_prepend = send_packet->nx_packet_prepend_ptr;
+
+                save_packet_length += send_packet->nx_packet_length;
+                send_packet->nx_packet_length = 0;
+                send_packet->nx_packet_append_ptr += NX_SECURE_DTLS_HANDSHAKE_HEADER_SIZE;
+                send_packet->nx_packet_prepend_ptr = send_packet->nx_packet_append_ptr;
+
+
+                if (_nx_secure_tls_send_server_key_exchange(tls_session, send_packet) != NX_SUCCESS) {
+                    break;
+                }
+                if (_nx_secure_dtls_send_handshake_record(dtls_session, send_packet, NX_SECURE_TLS_SERVER_KEY_EXCHANGE, wait_option, PSK_DO_NOT_SEND_RECORD) != NX_SUCCESS) {
+                    break;
+                }
+
+                //Set received_remote_credentials
+                //-------------------------------
+                tls_session -> nx_secure_tls_received_remote_credentials = NX_TRUE;
+
+                //ADD SERVER HELLO DONE
+                //---------------------
+
+                save_packet_length += send_packet->nx_packet_length;
+                send_packet->nx_packet_length = 0;
+                send_packet->nx_packet_append_ptr += NX_SECURE_DTLS_HANDSHAKE_HEADER_SIZE;
+                send_packet->nx_packet_prepend_ptr = send_packet->nx_packet_append_ptr;
+
+                /* Server hello done message is 0 bytes, but it still has a TLS header so don't modify the length here. */
+                if (_nx_secure_dtls_send_handshake_record(dtls_session, send_packet, NX_SECURE_TLS_SERVER_HELLO_DONE, wait_option, PSK_DO_NOT_SEND_RECORD) != NX_SUCCESS) {
+                    break;
+                }
+
+                //Send DTLS Record including : SERVER_HELLO +  KEY_EXCHANGE + HELLO_DONE
+                //----------------------------------------------------------------------
+                send_packet->nx_packet_prepend_ptr = remind_prepend;
+                send_packet->nx_packet_length += save_packet_length;
+                if (_nx_secure_dtls_send_record(dtls_session, send_packet, NX_SECURE_TLS_HANDSHAKE, wait_option) != NX_SUCCESS) {
+                    /* Release packet on send error. */
+                    nx_secure_tls_packet_release(send_packet);
+                }
+
+                //Set STATE_HELLO_SENT
+                //--------------------
+                tls_session -> nx_secure_tls_server_state = NX_SECURE_TLS_SERVER_STATE_HELLO_SENT;
+                break;
+            }
+        #endif
+
         /* We have received and processed a client hello. Now respond to the client appropriately. */
         status = _nx_secure_dtls_allocate_handshake_packet(dtls_session, packet_pool, &send_packet, wait_option);
 
@@ -530,6 +603,121 @@ UCHAR                                *fragment_buffer;
     case NX_SECURE_TLS_SERVER_STATE_KEY_EXCHANGE:
         break;
     case NX_SECURE_TLS_SERVER_STATE_FINISH_HANDSHAKE:
+        #ifdef  NX_SECURE_DTLS_PSK_SHORT_SERVER_HANDSHAKE
+        {
+            uint8_t tmp[100];
+            uint8_t tmp_indice = 0;
+
+            /* Release the protection before suspending on nx_packet_allocate. */
+            tx_mutex_put(&_nx_secure_tls_protection);
+
+            /* We have received everything we need to complete the handshake and keys have been
+             * generated above. Now end the handshake with a ChangeCipherSpec (indicating following
+             * messages are encrypted) and the encrypted Finished message. */
+
+            status = _nx_secure_dtls_packet_allocate(dtls_session, packet_pool, &send_packet, wait_option);
+
+            /* Get the protection after nx_packet_allocate. */
+            tx_mutex_get(&_nx_secure_tls_protection, TX_WAIT_FOREVER);
+
+            if (status != NX_SUCCESS) {
+                break;
+            }
+
+            _nx_secure_tls_send_changecipherspec(tls_session, send_packet);
+
+            /* ChangeCipherSpec is NOT a handshake message, so send as a normal TLS record. */
+
+            status = _nx_secure_dtls_send_record(dtls_session, send_packet, NX_SECURE_TLS_CHANGE_CIPHER_SPEC,PSK_DO_NOT_SEND_RECORD);
+
+            if (status != NX_SUCCESS) {
+                break;
+            }
+
+            if(send_packet->nx_packet_length >= sizeof(tmp))
+            {
+               status = NX_OVERFLOW;
+                send_packet -> nx_packet_union_next.nx_packet_tcp_queue_next =   ((NX_PACKET *)NX_PACKET_ALLOCATED);
+               nx_packet_release(send_packet);
+               break;
+            }else{
+                memcpy(&tmp[0], send_packet->nx_packet_prepend_ptr, send_packet->nx_packet_length);
+                tmp_indice += send_packet->nx_packet_length;
+                send_packet -> nx_packet_union_next.nx_packet_tcp_queue_next =   ((NX_PACKET *)NX_PACKET_ALLOCATED);
+                nx_packet_release(send_packet);
+            }
+
+
+
+            /* The local session is now active since we sent the changecipherspec message.
+               NOTE: Do not set this flag until after the changecipherspec message has been passed to the send record
+               routine - this flag causes encryption and hashing to happen on records. ChangeCipherSpec should be the last
+               un-encrypted/un-hashed record sent. */
+            tls_session->nx_secure_tls_local_session_active = 1;
+
+            /* For DTLS, reset sequence number and advance epoch right after CCS message is sent. */
+            NX_SECURE_MEMSET(tls_session->nx_secure_tls_local_sequence_number, 0,
+                             sizeof(tls_session->nx_secure_tls_local_sequence_number));
+
+            status = _nx_secure_tls_session_keys_set(tls_session, NX_SECURE_TLS_KEY_SET_LOCAL);
+
+            if (status != NX_SUCCESS) {
+                break;
+            }
+
+            /* Advance the DTLS epoch - all messages after the ChangeCipherSpec are in a new epoch. */
+            dtls_session->nx_secure_dtls_local_epoch = (USHORT) (dtls_session->nx_secure_dtls_local_epoch + 1);
+
+            /* We processed the incoming finished message above, so now we can send our own finished message. */
+            status = _nx_secure_dtls_allocate_handshake_packet(dtls_session, packet_pool, &send_packet, wait_option);
+            if (status != NX_SUCCESS) {
+                break;
+            }
+
+            _nx_secure_tls_send_finished(tls_session, send_packet);
+            status = _nx_secure_dtls_send_handshake_record(dtls_session, send_packet, NX_SECURE_TLS_FINISHED, PSK_DO_NOT_SEND_RECORD, 1);
+
+
+            //Send DTLS Record including : SERVER_HELLO +  KEY_EXCHANGE + HELLO_DONE
+            //----------------------------------------------------------------------
+            UINT  _nxd_udp_socket_source_send(NX_UDP_SOCKET *socket_ptr, NX_PACKET *packet_ptr, NXD_ADDRESS *ip_address, UINT port, UINT address_index);
+
+
+            tx_mutex_put(&_nx_secure_tls_protection);
+                if(send_packet->nx_packet_length >= (sizeof(tmp) - tmp_indice))
+                {
+                    status = NX_OVERFLOW;
+                    send_packet -> nx_packet_union_next.nx_packet_tcp_queue_next =   ((NX_PACKET *)NX_PACKET_ALLOCATED);
+                    nx_packet_release(send_packet);
+                    break;
+                }
+                memcpy(&tmp[tmp_indice], send_packet->nx_packet_prepend_ptr, send_packet->nx_packet_length);
+                tmp_indice += send_packet->nx_packet_length;
+
+                send_packet->nx_packet_append_ptr = send_packet->nx_packet_prepend_ptr;
+
+                memcpy(send_packet->nx_packet_append_ptr, &tmp[0], tmp_indice);
+                send_packet->nx_packet_append_ptr += tmp_indice;
+                send_packet->nx_packet_length = tmp_indice;
+
+            tx_mutex_get(&_nx_secure_tls_protection, TX_WAIT_FOREVER);
+
+            _nxd_udp_socket_source_send(dtls_session->nx_secure_dtls_udp_socket, send_packet,
+                                        &dtls_session->nx_secure_dtls_remote_ip_address,
+                                        dtls_session->nx_secure_dtls_remote_port,
+                                        dtls_session->nx_secure_dtls_local_ip_address_index);
+
+            tls_session->nx_secure_tls_server_state = NX_SECURE_TLS_SERVER_STATE_HANDSHAKE_FINISHED;
+
+            /* Check if application data is received before state change to NX_SECURE_TLS_SERVER_STATE_HANDSHAKE_FINISHED.  */
+            if (dtls_session->nx_secure_dtls_receive_queue_head) {
+
+                /* Notify application.  */
+                dtls_session->nx_secure_dtls_server_parent->nx_secure_dtls_receive_notify(dtls_session);
+            }
+        }
+        #else
+
         /* Release the protection before suspending on nx_packet_allocate. */
         tx_mutex_put(&_nx_secure_tls_protection);
 
@@ -599,7 +787,7 @@ UCHAR                                *fragment_buffer;
             /* Notify application.  */
             dtls_session -> nx_secure_dtls_server_parent -> nx_secure_dtls_receive_notify(dtls_session);
         }
-
+        #endif
         break;
     case NX_SECURE_TLS_SERVER_STATE_HANDSHAKE_FINISHED:
         /* Handshake is complete. */
