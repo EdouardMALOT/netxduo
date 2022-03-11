@@ -393,6 +393,7 @@ UCHAR                                 *fragment_buffer;
         return(NX_SECURE_TLS_HANDSHAKE_FAILURE);
         break;
     case NX_SECURE_TLS_SERVER_STATE_SEND_HELLO_VERIFY:
+        #ifndef NX_SECURE_DTLS_PSK_SHORT_SERVER_HANDSHAKE
         /* We have received and processed a client hello. Now respond to the client appropriately. */
         status = _nx_secure_dtls_allocate_handshake_packet(dtls_session, packet_pool, &send_packet, wait_option);
 
@@ -417,6 +418,7 @@ UCHAR                                 *fragment_buffer;
         }
 
         break;
+        #endif
     case NX_SECURE_TLS_SERVER_STATE_SEND_HELLO:
         #ifdef  NX_SECURE_DTLS_PSK_SHORT_SERVER_HANDSHAKE
             if(tls_session -> nx_secure_tls_session_ciphersuite -> nx_secure_tls_public_auth -> nx_crypto_algorithm == NX_CRYPTO_KEY_EXCHANGE_PSK)
