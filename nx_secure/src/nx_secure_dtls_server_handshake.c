@@ -402,6 +402,76 @@ UCHAR                                *fragment_buffer;
 
         break;
     case NX_SECURE_TLS_SERVER_STATE_SEND_HELLO:
+        #ifdef  NX_SECURE_DTLS_PSK_SHORT_SERVER_HANDSHAKE
+            if(tls_session -> nx_secure_tls_session_ciphersuite -> nx_secure_tls_public_auth -> nx_crypto_algorithm == NX_CRYPTO_KEY_EXCHANGE_PSK)
+            {
+                UCHAR                                 *remind_prepend;
+                uint32_t                              save_packet_length = 0;
+
+                //Allocate buffer
+                //---------------
+                /* We have received and processed a client hello. Now respond to the client appropriately. */
+                if (_nx_secure_dtls_allocate_handshake_packet(dtls_session, packet_pool, &send_packet, wait_option) != NX_SUCCESS) {
+                    break;
+                }
+
+                //Add SERVER HELLO
+                //----------------
+                _nx_secure_dtls_send_serverhello(dtls_session, send_packet);
+                if (_nx_secure_dtls_send_handshake_record(dtls_session, send_packet, NX_SECURE_TLS_SERVER_HELLO, wait_option, PSK_DO_NOT_SEND_RECORD) != NX_SUCCESS) {
+                    break;
+                }
+
+                //ADD KEY EXCHANGE
+                //----------------
+                remind_prepend = send_packet->nx_packet_prepend_ptr;
+
+                save_packet_length += send_packet->nx_packet_length;
+                send_packet->nx_packet_length = 0;
+                send_packet->nx_packet_append_ptr += NX_SECURE_DTLS_HANDSHAKE_HEADER_SIZE;
+                send_packet->nx_packet_prepend_ptr = send_packet->nx_packet_append_ptr;
+
+
+                if (_nx_secure_tls_send_server_key_exchange(tls_session, send_packet) != NX_SUCCESS) {
+                    break;
+                }
+                if (_nx_secure_dtls_send_handshake_record(dtls_session, send_packet, NX_SECURE_TLS_SERVER_KEY_EXCHANGE, wait_option, PSK_DO_NOT_SEND_RECORD) != NX_SUCCESS) {
+                    break;
+                }
+
+                //Set received_remote_credentials
+                //-------------------------------
+                tls_session -> nx_secure_tls_received_remote_credentials = NX_TRUE;
+
+                //ADD SERVER HELLO DONE
+                //---------------------
+
+                save_packet_length += send_packet->nx_packet_length;
+                send_packet->nx_packet_length = 0;
+                send_packet->nx_packet_append_ptr += NX_SECURE_DTLS_HANDSHAKE_HEADER_SIZE;
+                send_packet->nx_packet_prepend_ptr = send_packet->nx_packet_append_ptr;
+
+                /* Server hello done message is 0 bytes, but it still has a TLS header so don't modify the length here. */
+                if (_nx_secure_dtls_send_handshake_record(dtls_session, send_packet, NX_SECURE_TLS_SERVER_HELLO_DONE, wait_option, PSK_DO_NOT_SEND_RECORD) != NX_SUCCESS) {
+                    break;
+                }
+
+                //Send DTLS Record including : SERVER_HELLO +  KEY_EXCHANGE + HELLO_DONE
+                //----------------------------------------------------------------------
+                send_packet->nx_packet_prepend_ptr = remind_prepend;
+                send_packet->nx_packet_length += save_packet_length;
+                if (_nx_secure_dtls_send_record(dtls_session, send_packet, NX_SECURE_TLS_HANDSHAKE, wait_option) != NX_SUCCESS) {
+                    /* Release packet on send error. */
+                    nx_secure_tls_packet_release(send_packet);
+                }
+
+                //Set STATE_HELLO_SENT
+                //--------------------
+                tls_session -> nx_secure_tls_server_state = NX_SECURE_TLS_SERVER_STATE_HELLO_SENT;
+                break;
+            }
+        #endif
+
         /* We have received and processed a client hello. Now respond to the client appropriately. */
         status = _nx_secure_dtls_allocate_handshake_packet(dtls_session, packet_pool, &send_packet, wait_option);
 
