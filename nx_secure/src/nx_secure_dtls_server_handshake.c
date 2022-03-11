@@ -23,6 +23,7 @@
 #define NX_SECURE_SOURCE_CODE
 
 #include "nx_secure_dtls.h"
+#include "nx_packet.h"
 
 
 #ifdef NX_SECURE_ENABLE_DTLS
@@ -615,6 +616,106 @@ UCHAR                                 *fragment_buffer;
     case NX_SECURE_TLS_SERVER_STATE_KEY_EXCHANGE:
         break;
     case NX_SECURE_TLS_SERVER_STATE_FINISH_HANDSHAKE:
+        #ifdef  NX_SECURE_DTLS_PSK_SHORT_SERVER_HANDSHAKE
+        {
+            NX_PACKET *packet_1;
+            NX_PACKET *total_send_packet;
+
+            /* Release the protection before suspending on nx_packet_allocate. */
+            tx_mutex_put(&_nx_secure_tls_protection);
+
+            /* We have received everything we need to complete the handshake and keys have been
+             * generated above. Now end the handshake with a ChangeCipherSpec (indicating following
+             * messages are encrypted) and the encrypted Finished message. */
+
+            status = _nx_secure_dtls_packet_allocate(dtls_session, packet_pool, &packet_1, wait_option);
+
+            /* Get the protection after nx_packet_allocate. */
+            tx_mutex_get(&_nx_secure_tls_protection, TX_WAIT_FOREVER);
+
+            if (status != NX_SUCCESS) {
+                break;
+            }
+
+            _nx_secure_tls_send_changecipherspec(tls_session, packet_1);
+
+            /* ChangeCipherSpec is NOT a handshake message, so send as a normal TLS record. */
+
+            status = _nx_secure_dtls_send_record(dtls_session, packet_1, NX_SECURE_TLS_CHANGE_CIPHER_SPEC,PSK_DO_NOT_SEND_RECORD);
+
+            if (status != NX_SUCCESS) {
+                break;
+            }
+
+
+
+            /* The local session is now active since we sent the changecipherspec message.
+               NOTE: Do not set this flag until after the changecipherspec message has been passed to the send record
+               routine - this flag causes encryption and hashing to happen on records. ChangeCipherSpec should be the last
+               un-encrypted/un-hashed record sent. */
+            tls_session->nx_secure_tls_local_session_active = 1;
+
+            /* For DTLS, reset sequence number and advance epoch right after CCS message is sent. */
+            NX_SECURE_MEMSET(tls_session->nx_secure_tls_local_sequence_number, 0,
+                             sizeof(tls_session->nx_secure_tls_local_sequence_number));
+
+            status = _nx_secure_tls_session_keys_set(tls_session, NX_SECURE_TLS_KEY_SET_LOCAL);
+
+            if (status != NX_SUCCESS) {
+                break;
+            }
+
+            /* Advance the DTLS epoch - all messages after the ChangeCipherSpec are in a new epoch. */
+            dtls_session->nx_secure_dtls_local_epoch = (USHORT) (dtls_session->nx_secure_dtls_local_epoch + 1);
+
+            /* We processed the incoming finished message above, so now we can send our own finished message. */
+            status = _nx_secure_dtls_allocate_handshake_packet(dtls_session, packet_pool, &send_packet, wait_option);
+            if (status != NX_SUCCESS) {
+                break;
+            }
+
+            _nx_secure_tls_send_finished(tls_session, send_packet);
+            status = _nx_secure_dtls_send_handshake_record(dtls_session, send_packet, NX_SECURE_TLS_FINISHED, PSK_DO_NOT_SEND_RECORD, 1);
+
+
+            //Send DTLS Record including : SERVER_HELLO +  KEY_EXCHANGE + HELLO_DONE
+            //----------------------------------------------------------------------
+            UINT  _nxd_udp_socket_source_send(NX_UDP_SOCKET *socket_ptr, NX_PACKET *packet_ptr, NXD_ADDRESS *ip_address, UINT port, UINT address_index);
+
+
+            tx_mutex_put(&_nx_secure_tls_protection);
+            nx_packet_allocate(packet_pool, &total_send_packet, NX_IPv4_UDP_PACKET, wait_option);
+
+            memcpy(total_send_packet->nx_packet_append_ptr, packet_1->nx_packet_prepend_ptr, packet_1->nx_packet_length);
+            total_send_packet->nx_packet_append_ptr += packet_1->nx_packet_length;
+            total_send_packet->nx_packet_length += packet_1->nx_packet_length;
+            packet_1 -> nx_packet_union_next.nx_packet_tcp_queue_next =   ((NX_PACKET *)NX_PACKET_ALLOCATED);
+            nx_packet_release(packet_1);
+
+            memcpy(total_send_packet->nx_packet_append_ptr, send_packet->nx_packet_prepend_ptr, send_packet->nx_packet_length);
+            total_send_packet->nx_packet_append_ptr += send_packet->nx_packet_length;
+            total_send_packet->nx_packet_length += send_packet->nx_packet_length;
+            send_packet -> nx_packet_union_next.nx_packet_tcp_queue_next =   ((NX_PACKET *)NX_PACKET_ALLOCATED);
+            nx_packet_release(send_packet);
+
+            tx_mutex_get(&_nx_secure_tls_protection, TX_WAIT_FOREVER);
+
+            _nxd_udp_socket_source_send(dtls_session->nx_secure_dtls_udp_socket, total_send_packet,
+                                        &dtls_session->nx_secure_dtls_remote_ip_address,
+                                        dtls_session->nx_secure_dtls_remote_port,
+                                        dtls_session->nx_secure_dtls_local_ip_address_index);
+
+            tls_session->nx_secure_tls_server_state = NX_SECURE_TLS_SERVER_STATE_HANDSHAKE_FINISHED;
+
+            /* Check if application data is received before state change to NX_SECURE_TLS_SERVER_STATE_HANDSHAKE_FINISHED.  */
+            if (dtls_session->nx_secure_dtls_receive_queue_head) {
+
+                /* Notify application.  */
+                dtls_session->nx_secure_dtls_server_parent->nx_secure_dtls_receive_notify(dtls_session);
+            }
+        }
+        #else
+
         /* Release the protection before suspending on nx_packet_allocate. */
         tx_mutex_put(&_nx_secure_tls_protection);
 
@@ -681,7 +782,7 @@ UCHAR                                 *fragment_buffer;
             /* Notify application.  */
             dtls_session -> nx_secure_dtls_server_parent -> nx_secure_dtls_receive_notify(dtls_session);
         }
-
+        #endif
         break;
     case NX_SECURE_TLS_SERVER_STATE_HANDSHAKE_FINISHED:
         /* Handshake is complete. */
