@@ -273,7 +273,10 @@ UCHAR                  epoch_seq_num[8];
 
     /* Release the protection before suspending on nx_tcp_socket_send. */
     tx_mutex_put(&_nx_secure_tls_protection);
-
+#ifdef NX_SECURE_DTLS_PSK_SHORT_SERVER_HANDSHAKE
+    if(wait_option != PSK_DO_NOT_SEND_RECORD)
+    {
+#endif
     /* If local IP address index is set, call _nxd_udp_socket_source_send
        to ensure the source IP address is correct.  */
     if (dtls_session -> nx_secure_dtls_local_ip_address_index == 0xffffffff)
@@ -293,7 +296,9 @@ UCHAR                  epoch_seq_num[8];
                                              dtls_session -> nx_secure_dtls_remote_port,
                                              dtls_session -> nx_secure_dtls_local_ip_address_index);
     }
-
+#ifdef NX_SECURE_DTLS_PSK_SHORT_SERVER_HANDSHAKE
+    }
+#endif
     /* Get the protection after nx_tcp_socket_send. */
     tx_mutex_get(&_nx_secure_tls_protection, TX_WAIT_FOREVER);
 
