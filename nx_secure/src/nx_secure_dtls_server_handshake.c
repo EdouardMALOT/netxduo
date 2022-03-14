@@ -602,8 +602,8 @@ UCHAR                                *fragment_buffer;
     case NX_SECURE_TLS_SERVER_STATE_FINISH_HANDSHAKE:
         #ifdef  NX_SECURE_DTLS_PSK_SHORT_SERVER_HANDSHAKE
         {
-            NX_PACKET *packet_1;
-            NX_PACKET *total_send_packet;
+            uint8_t tmp[100];
+            uint8_t tmp_indice = 0;
 
             /* Release the protection before suspending on nx_packet_allocate. */
             tx_mutex_put(&_nx_secure_tls_protection);
@@ -612,7 +612,7 @@ UCHAR                                *fragment_buffer;
              * generated above. Now end the handshake with a ChangeCipherSpec (indicating following
              * messages are encrypted) and the encrypted Finished message. */
 
-            status = _nx_secure_dtls_packet_allocate(dtls_session, packet_pool, &packet_1, wait_option);
+            status = _nx_secure_dtls_packet_allocate(dtls_session, packet_pool, &send_packet, wait_option);
 
             /* Get the protection after nx_packet_allocate. */
             tx_mutex_get(&_nx_secure_tls_protection, TX_WAIT_FOREVER);
@@ -621,14 +621,27 @@ UCHAR                                *fragment_buffer;
                 break;
             }
 
-            _nx_secure_tls_send_changecipherspec(tls_session, packet_1);
+            _nx_secure_tls_send_changecipherspec(tls_session, send_packet);
 
             /* ChangeCipherSpec is NOT a handshake message, so send as a normal TLS record. */
 
-            status = _nx_secure_dtls_send_record(dtls_session, packet_1, NX_SECURE_TLS_CHANGE_CIPHER_SPEC,PSK_DO_NOT_SEND_RECORD);
+            status = _nx_secure_dtls_send_record(dtls_session, send_packet, NX_SECURE_TLS_CHANGE_CIPHER_SPEC,PSK_DO_NOT_SEND_RECORD);
 
             if (status != NX_SUCCESS) {
                 break;
+            }
+
+            if(send_packet->nx_packet_length >= sizeof(tmp))
+            {
+               status = NX_OVERFLOW;
+                send_packet -> nx_packet_union_next.nx_packet_tcp_queue_next =   ((NX_PACKET *)NX_PACKET_ALLOCATED);
+               nx_packet_release(send_packet);
+               break;
+            }else{
+                memcpy(&tmp[0], send_packet->nx_packet_prepend_ptr, send_packet->nx_packet_length);
+                tmp_indice += send_packet->nx_packet_length;
+                send_packet -> nx_packet_union_next.nx_packet_tcp_queue_next =   ((NX_PACKET *)NX_PACKET_ALLOCATED);
+                nx_packet_release(send_packet);
             }
 
 
@@ -668,23 +681,25 @@ UCHAR                                *fragment_buffer;
 
 
             tx_mutex_put(&_nx_secure_tls_protection);
-            nx_packet_allocate(packet_pool, &total_send_packet, NX_IPv4_UDP_PACKET, wait_option);
+                if(send_packet->nx_packet_length >= (sizeof(tmp) - tmp_indice))
+                {
+                    status = NX_OVERFLOW;
+                    send_packet -> nx_packet_union_next.nx_packet_tcp_queue_next =   ((NX_PACKET *)NX_PACKET_ALLOCATED);
+                    nx_packet_release(send_packet);
+                    break;
+                }
+                memcpy(&tmp[tmp_indice], send_packet->nx_packet_prepend_ptr, send_packet->nx_packet_length);
+                tmp_indice += send_packet->nx_packet_length;
 
-            memcpy(total_send_packet->nx_packet_append_ptr, packet_1->nx_packet_prepend_ptr, packet_1->nx_packet_length);
-            total_send_packet->nx_packet_append_ptr += packet_1->nx_packet_length;
-            total_send_packet->nx_packet_length += packet_1->nx_packet_length;
-            packet_1 -> nx_packet_union_next.nx_packet_tcp_queue_next =   ((NX_PACKET *)NX_PACKET_ALLOCATED);
-            nx_packet_release(packet_1);
+                send_packet->nx_packet_append_ptr = send_packet->nx_packet_prepend_ptr;
 
-            memcpy(total_send_packet->nx_packet_append_ptr, send_packet->nx_packet_prepend_ptr, send_packet->nx_packet_length);
-            total_send_packet->nx_packet_append_ptr += send_packet->nx_packet_length;
-            total_send_packet->nx_packet_length += send_packet->nx_packet_length;
-            send_packet -> nx_packet_union_next.nx_packet_tcp_queue_next =   ((NX_PACKET *)NX_PACKET_ALLOCATED);
-            nx_packet_release(send_packet);
+                memcpy(send_packet->nx_packet_append_ptr, &tmp[0], tmp_indice);
+                send_packet->nx_packet_append_ptr += tmp_indice;
+                send_packet->nx_packet_length = tmp_indice;
 
             tx_mutex_get(&_nx_secure_tls_protection, TX_WAIT_FOREVER);
 
-            _nxd_udp_socket_source_send(dtls_session->nx_secure_dtls_udp_socket, total_send_packet,
+            _nxd_udp_socket_source_send(dtls_session->nx_secure_dtls_udp_socket, send_packet,
                                         &dtls_session->nx_secure_dtls_remote_ip_address,
                                         dtls_session->nx_secure_dtls_remote_port,
                                         dtls_session->nx_secure_dtls_local_ip_address_index);
