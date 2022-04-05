@@ -39,7 +39,7 @@ static UINT _nx_secure_x509_parse_validity(const UCHAR *buffer, ULONG length,
                                            UINT *bytes_processed, NX_SECURE_X509_CERT *cert);
 static UINT _nx_secure_x509_parse_subject(const UCHAR *buffer, ULONG length, UINT *bytes_processed,
                                           NX_SECURE_X509_CERT *cert);
-static UINT _nx_secure_x509_parse_public_key(const UCHAR *buffer, ULONG length,
+UINT _nx_secure_x509_parse_public_key(const UCHAR *buffer, ULONG length,
                                              UINT *bytes_processed, NX_SECURE_X509_CERT *cert);
 static UINT _nx_secure_x509_parse_unique_ids(const UCHAR *buffer, ULONG length,
                                              UINT *bytes_processed, NX_SECURE_X509_CERT *cert);
@@ -1288,7 +1288,7 @@ UINT         status;
 /*                                            resulting in version 6.1    */
 /*                                                                        */
 /**************************************************************************/
-static UINT _nx_secure_x509_parse_public_key(const UCHAR *buffer, ULONG length,
+UINT _nx_secure_x509_parse_public_key(const UCHAR *buffer, ULONG length,
                                              UINT *bytes_processed, NX_SECURE_X509_CERT *cert)
 {
 USHORT       tlv_type;
