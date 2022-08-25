@@ -75,7 +75,9 @@ static VOID        _nx_dhcp_ip_conflict(NX_IP *ip_ptr, UINT interface_index, ULO
 
 UCHAR _nx_dhcp_request_parameters[] = { NX_DHCP_OPTION_SUBNET_MASK,
                                         NX_DHCP_OPTION_GATEWAYS,
-                                        NX_DHCP_OPTION_DNS_SVR};
+                                        NX_DHCP_OPTION_DNS_SVR,
+                                        NX_DHCP_OPTION_NTP_SVR
+                                        };
 
 #define NX_DHCP_REQUEST_PARAMETER_SIZE sizeof(_nx_dhcp_request_parameters)
 
