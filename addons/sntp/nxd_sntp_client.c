@@ -4906,7 +4906,7 @@ UINT                offset;
 UINT                return_length;
 NX_SNTP_DATE_TIME   DisplayTime;
 const CHAR         *months[12] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                                  "Jul", "Aud", "Sep", "Oct", "Nov", "Dec"};
+                                  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
 
 #ifndef  NX_SNTP_CURRENT_YEAR  
