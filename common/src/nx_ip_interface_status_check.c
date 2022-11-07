@@ -185,7 +185,12 @@ ULONG                  trace_timestamp;
             NX_TRACE_IN_LINE_INSERT(NX_TRACE_INTERNAL_IO_DRIVER_GET_STATUS, ip_ptr, 0, 0, 0, NX_TRACE_INTERNAL_EVENTS, 0, 0);
 
             /* Call link level driver.  */
-            (ip_ptr -> nx_ip_interface[interface_index].nx_interface_link_driver_entry)(&driver_request);
+			if(ip_ptr -> nx_ip_interface[interface_index].nx_interface_link_driver_entry != NULL) {
+				(ip_ptr -> nx_ip_interface[interface_index].nx_interface_link_driver_entry)(&driver_request);
+			}else{
+				driver_request.nx_ip_driver_status = NX_PTR_ERROR;
+				return_value = NX_FALSE;
+			}
 
             /* If the driver does not recognize this keyword, we fall back to reading the IP link status.*/
             /*lint -e{644} suppress variable might not be initialized, since "nx_ip_driver_status" was initialized in nx_interface_link_driver_entry. */
@@ -254,7 +259,12 @@ ULONG                  trace_timestamp;
             NX_TRACE_IN_LINE_INSERT(NX_TRACE_INTERNAL_IO_DRIVER_GET_STATUS, ip_ptr, 0, 0, 0, NX_TRACE_INTERNAL_EVENTS, 0, 0);
 
             /* Call link level driver.  */
-            (ip_ptr -> nx_ip_interface[interface_index].nx_interface_link_driver_entry)(&driver_request);
+			if(ip_ptr -> nx_ip_interface[interface_index].nx_interface_link_driver_entry != NULL) {
+	            (ip_ptr -> nx_ip_interface[interface_index].nx_interface_link_driver_entry)(&driver_request);
+	        }else{
+		        driver_request.nx_ip_driver_status = NX_PTR_ERROR;
+		        return_value = NX_FALSE;
+	        }
 
             /* If the driver does not recognize this keyword, we fall back to reading the IP link status.*/
             /*lint -e{644} suppress variable might not be initialized, since "nx_ip_driver_status" was initialized in nx_interface_link_driver_entry. */
