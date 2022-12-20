@@ -412,7 +412,7 @@ UCHAR                                *fragment_buffer;
             if(tls_session -> nx_secure_tls_session_ciphersuite -> nx_secure_tls_public_auth -> nx_crypto_algorithm == NX_CRYPTO_KEY_EXCHANGE_PSK)
             {
                 UCHAR                                 *remind_prepend;
-                uint32_t                              save_packet_length = 0;
+	            ULONG                              save_packet_length = 0;
 
                 //Allocate buffer
                 //---------------
@@ -605,8 +605,8 @@ UCHAR                                *fragment_buffer;
     case NX_SECURE_TLS_SERVER_STATE_FINISH_HANDSHAKE:
         #ifdef  NX_SECURE_DTLS_PSK_SHORT_SERVER_HANDSHAKE
         {
-            uint8_t tmp[100];
-            uint8_t tmp_indice = 0;
+	        UCHAR tmp[100];
+	        UCHAR tmp_indice = 0;
 
             /* Release the protection before suspending on nx_packet_allocate. */
             tx_mutex_put(&_nx_secure_tls_protection);
