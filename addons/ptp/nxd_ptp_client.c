@@ -1,5 +1,6 @@
 /***************************************************************************
  * Copyright (c) 2024 Microsoft Corporation 
+ * Copyright (c) 2025-present Eclipse ThreadX Contributors
  * 
  * This program and the accompanying materials are made available under the
  * terms of the MIT License which is available at
@@ -23,7 +24,7 @@
 /*  APPLICATION INTERFACE DEFINITION                       RELEASE        */
 /*                                                                        */
 /*    nxd_ptp_client.c                                    PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -244,7 +245,7 @@ static VOID  _nx_ptp_utility_32_unsigned_write(UCHAR *dest_ptr, ULONG value)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_msg_parse_timestamp                         PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -294,7 +295,7 @@ ULONG nanoseconds = (ULONG)time_ptr -> nanosecond;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_msg_parse_hdr                               PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -441,7 +442,7 @@ UINT   interface_index;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_msg_parse_announce                          PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -494,7 +495,7 @@ static VOID _nx_ptp_msg_parse_announce(UCHAR *ptr, NX_PTP_CLIENT_MASTER *master)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_master_clock_compare                    PORTABLE C   */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Tiejun Zhou, Microsoft Corporation                                  */
@@ -590,7 +591,7 @@ INT gm_compare;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_soft_clock_adjust                    PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -664,7 +665,7 @@ TX_INTERRUPT_SAVE_AREA
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_timer_handler                        PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -716,7 +717,7 @@ NX_PTP_CLIENT *client_ptr = (NX_PTP_CLIENT *)ptp_instance;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_socket_receive_notify                PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -764,7 +765,7 @@ NX_PTP_CLIENT *client_ptr = (NX_PTP_CLIENT *)(socket_ptr -> nx_udp_socket_reserv
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_ethernet_receive_notify              PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Tiejun Zhou, Microsoft Corporation                                  */
@@ -857,7 +858,7 @@ NX_PTP_CLIENT *client_ptr = (NX_PTP_CLIENT *)context;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_clock_adjust                         PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -962,7 +963,7 @@ NX_PTP_TIME current;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_send_delay_req                       PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -1134,7 +1135,7 @@ NX_INTERFACE     *if_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_sync_received                        PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -1305,7 +1306,7 @@ ULONG64     correctionNS = (hdr -> cFieldHigh << 16) | (hdr -> cFieldLow >> 16);
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_delay_resp_received                  PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -1440,7 +1441,7 @@ NX_PTP_CLIENT_SYNC sync;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_init_packet_received                 PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -1635,7 +1636,7 @@ INT compare_result;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_send_pdelay_req                      PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Tiejun Zhou, Microsoft Corporation                                  */
@@ -1822,7 +1823,7 @@ NX_INTERFACE     *if_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_pdelay_resp_received                 PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Tiejun Zhou, Microsoft Corporation                                  */
@@ -1961,7 +1962,7 @@ NX_PTP_TIME a, b, c, d, t3;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_send_pdelay_resp_follow_up           PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Tiejun Zhou, Microsoft Corporation                                  */
@@ -2142,7 +2143,7 @@ NX_INTERFACE     *if_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_send_pdelay_resp                     PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Tiejun Zhou, Microsoft Corporation                                  */
@@ -2336,7 +2337,7 @@ NX_INTERFACE     *if_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_send_follow_up                       PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Tiejun Zhou, Microsoft Corporation                                  */
@@ -2528,7 +2529,7 @@ NX_INTERFACE     *if_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_send_sync                            PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Tiejun Zhou, Microsoft Corporation                                  */
@@ -2695,7 +2696,7 @@ NX_INTERFACE     *if_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_send_announce                        PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Tiejun Zhou, Microsoft Corporation                                  */
@@ -2889,7 +2890,7 @@ NX_INTERFACE     *if_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_process_event_packet                 PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -3032,7 +3033,7 @@ static VOID _nx_ptp_client_process_event_packet(NX_PTP_CLIENT *client_ptr, NX_PA
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_process_general_packet               PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -3148,7 +3149,7 @@ static VOID _nx_ptp_client_process_general_packet(NX_PTP_CLIENT *client_ptr, NX_
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_thread_entry                         PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -3469,7 +3470,7 @@ NX_PTP_MSG_HEADER hdr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_ptp_client_create                              PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -3543,7 +3544,7 @@ UINT _nxe_ptp_client_create(NX_PTP_CLIENT *client_ptr, NX_IP *ip_ptr, UINT inter
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_create                               PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -3716,7 +3717,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_ptp_client_delete                              PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -3772,7 +3773,7 @@ UINT _nxe_ptp_client_delete(NX_PTP_CLIENT *client_ptr)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_delete                               PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -3852,7 +3853,7 @@ UINT _nx_ptp_client_delete(NX_PTP_CLIENT *client_ptr)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_ptp_client_start                               PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -3921,7 +3922,7 @@ UINT _nxe_ptp_client_start(NX_PTP_CLIENT *client_ptr, UCHAR *client_port_identit
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_start                                PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -4183,7 +4184,7 @@ NXD_ADDRESS maddr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_ptp_client_stop                                PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -4239,7 +4240,7 @@ UINT _nxe_ptp_client_stop(NX_PTP_CLIENT *client_ptr)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_stop                                 PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -4369,7 +4370,7 @@ NXD_ADDRESS maddr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_ptp_client_master_enable                       PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Tiejun Zhou, Microsoft Corporation                                  */
@@ -4445,7 +4446,7 @@ UINT _nxe_ptp_client_master_enable(NX_PTP_CLIENT *client_ptr, UCHAR role, UCHAR 
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_master_enable                        PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Tiejun Zhou, Microsoft Corporation                                  */
@@ -4532,7 +4533,7 @@ UINT _nx_ptp_client_master_enable(NX_PTP_CLIENT *client_ptr, UCHAR role, UCHAR p
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_ptp_client_time_get                            PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -4589,7 +4590,7 @@ UINT _nxe_ptp_client_time_get(NX_PTP_CLIENT *client_ptr, NX_PTP_TIME *time_ptr)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_time_get                             PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -4640,7 +4641,7 @@ UINT _nx_ptp_client_time_get(NX_PTP_CLIENT *client_ptr, NX_PTP_TIME *time_ptr)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_ptp_client_time_set                            PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -4697,7 +4698,7 @@ UINT _nxe_ptp_client_time_set(NX_PTP_CLIENT *client_ptr, NX_PTP_TIME *time_ptr)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_time_set                             PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -4762,7 +4763,7 @@ UINT state;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_ptp_client_master_info_get                     PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -4834,7 +4835,7 @@ UINT _nxe_ptp_client_master_info_get(NX_PTP_CLIENT_MASTER *master_ptr, NXD_ADDRE
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_master_info_get                      PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -4948,7 +4949,7 @@ UINT _nx_ptp_client_master_info_get(NX_PTP_CLIENT_MASTER *master_ptr, NXD_ADDRES
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_ptp_client_sync_info_get                       PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -5003,7 +5004,7 @@ UINT _nxe_ptp_client_sync_info_get(NX_PTP_CLIENT_SYNC *sync_ptr, USHORT *flags, 
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_sync_info_get                        PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -5060,7 +5061,7 @@ UINT _nx_ptp_client_sync_info_get(NX_PTP_CLIENT_SYNC *sync_ptr, USHORT *flags, S
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_packet_timestamp_notify              PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -5167,7 +5168,7 @@ VOID _nx_ptp_client_packet_timestamp_notify(NX_PTP_CLIENT *client_ptr, NX_PACKET
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_soft_clock_callback                  PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -5279,7 +5280,7 @@ TX_INTERRUPT_SAVE_AREA
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_ptp_client_utility_time_diff                   PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -5336,7 +5337,7 @@ UINT _nxe_ptp_client_utility_time_diff(NX_PTP_TIME *time1_ptr, NX_PTP_TIME *time
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_ptp_client_utility_time_sum                    PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Tiejun Zhou, Microsoft Corporation                                  */
@@ -5394,7 +5395,7 @@ UINT _nxe_ptp_client_utility_time_sum(NX_PTP_TIME *time1_ptr, NX_PTP_TIME *time2
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_utility_time_diff                    PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -5493,7 +5494,7 @@ LONG  ns;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_utility_time_sum                    PORTABLE C       */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Tiejun Zhou, Microsoft Corporation                                  */
@@ -5591,7 +5592,7 @@ LONG  ns;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_ptp_client_utility_convert_time_to_date        PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -5651,7 +5652,7 @@ UINT _nxe_ptp_client_utility_convert_time_to_date(NX_PTP_TIME *time_ptr, LONG of
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_utility_convert_time_to_date         PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -5793,7 +5794,7 @@ UINT  is_leap;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_utility_add64                        PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -5851,7 +5852,7 @@ ULONG r_lo;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_utility_sub64                        PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -5907,7 +5908,7 @@ ULONG r_lo;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_utility_inc64                        PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -5961,7 +5962,7 @@ ULONG r_lo;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_utility_dec64                        PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -6014,7 +6015,7 @@ ULONG r_lo;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_utility_neg64                        PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -6066,7 +6067,7 @@ LONG r_hi;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ptp_client_utility_time_div_by_2                PORTABLE C      */
-/*                                                           6.1.3        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */

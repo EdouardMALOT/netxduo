@@ -1,5 +1,6 @@
 /***************************************************************************
  * Copyright (c) 2024 Microsoft Corporation 
+ * Copyright (c) 2025-present Eclipse ThreadX Contributors
  * 
  * This program and the accompanying materials are made available under the
  * terms of the MIT License which is available at
@@ -36,7 +37,7 @@
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_http_proxy_client_enable                       PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wenhui Xie, Microsoft Corporation                                   */
@@ -136,7 +137,7 @@ UINT        status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_http_proxy_client_enable                        PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wenhui Xie, Microsoft Corporation                                   */
@@ -256,7 +257,7 @@ UCHAR string[NX_HTTP_PROXY_MAX_USERNAME + NX_HTTP_PROXY_MAX_PASSWORD + 2];
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_http_proxy_client_initialize                    PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wenhui Xie, Microsoft Corporation                                   */
@@ -335,7 +336,7 @@ NX_IP *ip_ptr = socket_ptr -> nx_tcp_socket_ip_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_http_proxy_client_connect                       PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wenhui Xie, Microsoft Corporation                                   */
@@ -523,7 +524,7 @@ UINT port = socket_ptr -> nx_tcp_socket_original_server_port;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_http_proxy_client_connect_response_process      PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wenhui Xie, Microsoft Corporation                                   */
@@ -752,7 +753,7 @@ NX_PACKET_POOL *pool_ptr = ip_ptr -> nx_ip_default_packet_pool;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_http_proxy_client_cleanup                       PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wenhui Xie, Microsoft Corporation                                   */

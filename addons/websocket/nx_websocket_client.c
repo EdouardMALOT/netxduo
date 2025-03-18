@@ -1,5 +1,6 @@
 /***************************************************************************
  * Copyright (c) 2024 Microsoft Corporation 
+ * Copyright (c) 2025-present Eclipse ThreadX Contributors
  * 
  * This program and the accompanying materials are made available under the
  * terms of the MIT License which is available at
@@ -55,7 +56,7 @@ NX_CALLER_CHECKING_EXTERNS
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_websocket_client_create                        PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -116,7 +117,7 @@ UINT        status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_websocket_client_create                         PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -190,7 +191,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_websocket_client_delete                        PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -247,7 +248,7 @@ UINT        status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_websocket_client_delete                         PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -307,7 +308,7 @@ UINT  _nx_websocket_client_delete(NX_WEBSOCKET_CLIENT *client_ptr)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_websocket_client_connect                       PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -378,7 +379,7 @@ UINT        status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_websocket_client_connect                        PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -474,7 +475,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_websocket_client_connect_internal               PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -712,7 +713,7 @@ NX_PACKET *packet_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_websocket_client_secure_connect                PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -783,7 +784,7 @@ UINT        status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_websocket_client_secure_connect                 PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -877,7 +878,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_websocket_client_name_compare                   PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -956,7 +957,7 @@ UCHAR   ch;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_websocket_client_connect_response_process       PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -1175,7 +1176,7 @@ UCHAR   accept_cnt = 0;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_websocket_client_disconnect                    PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -1232,7 +1233,7 @@ UINT        status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_websocket_client_disconnect                     PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -1330,7 +1331,7 @@ NX_PACKET  *packet_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_websocket_client_send                          PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -1391,7 +1392,7 @@ UINT        status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_websocket_client_send                           PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -1561,7 +1562,7 @@ UINT header_size = NX_WEBSOCKET_HEADER_NORMAL_SIZE;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_websocket_client_receive                       PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -1621,7 +1622,7 @@ UINT        status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_websocket_client_receive                        PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -1763,7 +1764,7 @@ UINT        status = NX_SUCCESS;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_websocket_client_data_process                   PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -2240,7 +2241,7 @@ UCHAR *data_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_websocket_client_packet_trim                    PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -2337,7 +2338,7 @@ NX_PACKET   *previous_packet_ptr = NX_NULL;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_websocket_client_packet_allocate               PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -2395,7 +2396,7 @@ UINT        status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_websocket_client_packet_allocate                PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -2494,7 +2495,7 @@ UINT        status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_websocket_client_packet_send                    PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -2556,7 +2557,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_websocket_client_packet_receive                 PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -2625,7 +2626,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_websocket_client_connect_response_check         PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -2816,7 +2817,7 @@ NX_PACKET *tmp_ptr;
 /*                                                                        */
 /*    _nxe_websocket_client_connection_status_callback_set                */
 /*                                                        PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -2876,7 +2877,7 @@ UINT        status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_websocket_client_connection_status_callback_set PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */
@@ -2935,7 +2936,7 @@ UINT  _nx_websocket_client_connection_status_callback_set(NX_WEBSOCKET_CLIENT *c
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_websocket_client_cleanup                        PORTABLE C      */
-/*                                                           6.2.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Bo Chen, Microsoft Corporation                                      */

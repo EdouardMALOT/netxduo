@@ -1,5 +1,6 @@
 /***************************************************************************
  * Copyright (c) 2024 Microsoft Corporation 
+ * Copyright (c) 2025-present Eclipse ThreadX Contributors
  * 
  * This program and the accompanying materials are made available under the
  * terms of the MIT License which is available at
@@ -216,7 +217,7 @@ static struct NX_BSD_SERVICE_LIST  *_nx_bsd_serv_list_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    bsd_initialize                                      PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -479,7 +480,7 @@ ULONG       info;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_timeout_process                              PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -641,7 +642,7 @@ NX_BSD_SOCKET  *bsd_socket_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_thread_entry                                 PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -700,7 +701,7 @@ VOID nx_bsd_thread_entry(ULONG info)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    socket                                              PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -1240,7 +1241,7 @@ UINT            index;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    connect                                             PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -1799,7 +1800,7 @@ ULONG               actual_status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    bind                                                PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -2400,7 +2401,7 @@ INT                 address_conflict;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    listen                                              PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -2650,7 +2651,7 @@ INT                 ret;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    accept                                              PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -3125,7 +3126,7 @@ struct nx_bsd_sockaddr_in6
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_send_internal                                PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -3576,7 +3577,7 @@ ULONG               data_sent = (ULONG)msgLength;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    send                                                PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -3741,7 +3742,7 @@ NX_BSD_SOCKET *bsd_socket_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    sendto                                              PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -3987,7 +3988,7 @@ USHORT               peer_port = 0;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    recv                                                PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -4066,7 +4067,7 @@ struct nx_bsd_iovec iov;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    recvfrom                                            PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -4135,7 +4136,7 @@ struct nx_bsd_iovec iov;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    recvmsg                                             PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yanwu Cai, Microsoft Corporation                                    */
@@ -4190,7 +4191,7 @@ INT fromAddrLen = 0;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    recv_internal                                       PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yanwu Cai, Microsoft Corporation                                    */
@@ -4884,7 +4885,7 @@ struct nx_bsd_sockaddr_in6
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    soc_close                                           PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -5363,7 +5364,7 @@ UINT                 index;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    fcntl                                               PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -5476,7 +5477,7 @@ NX_BSD_SOCKET   *bsd_socket_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    ioctl                                               PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -5740,7 +5741,7 @@ NX_INTERFACE        *nx_interface;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    inet_ntoa                                           PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -5808,7 +5809,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    bsd_number_convert                                  PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -5910,7 +5911,7 @@ UINT    size;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    inet_aton                                           PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -6194,7 +6195,7 @@ UINT  dot_flag;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    inet_addr                                           PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -6256,7 +6257,7 @@ UINT    status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    getsockopt                                          PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -6594,7 +6595,7 @@ ULONG                                   ticks;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    setsockopt                                          PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -7281,7 +7282,7 @@ ULONG           physical_addr_lsw;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    getsockname                                         PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -7518,7 +7519,7 @@ NX_BSD_SOCKET       *bsd_socket_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    getpeername                                         PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -7810,7 +7811,7 @@ struct nx_bsd_sockaddr_in6 *soc6_struct_ptr = NX_NULL;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    select                                              PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -8309,7 +8310,7 @@ INT                     ret;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_tcp_receive_notify                           PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -8387,7 +8388,7 @@ UINT                    bsd_socket_index;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_tcp_establish_notify                         PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -8507,7 +8508,7 @@ UINT                    master_socket_index;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_tcp_socket_disconnect_notify                 PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -8666,7 +8667,7 @@ UINT                    status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_udp_receive_notify                           PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -8743,7 +8744,7 @@ NX_UDP_SOCKET           *udp_socket_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    FD_SET                                              PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -8823,7 +8824,7 @@ UINT    index;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    FD_CLR                                              PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -8904,7 +8905,7 @@ UINT    index;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    FD_ISSET                                            PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -8983,7 +8984,7 @@ UINT    index;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    FD_ZERO                                             PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -9044,7 +9045,7 @@ INT     i;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_raw_packet_filter                            PORTABLE C      */
-/*                                                           6.1.9        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -9198,7 +9199,7 @@ NX_BSD_SOCKET * bsd_socket_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_raw_receive_notify                           PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -9258,7 +9259,7 @@ VOID  nx_bsd_raw_receive_notify(NX_IP *ip_ptr, UINT bsd_socket_index)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_raw_packet_receive                           PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -9365,7 +9366,7 @@ UINT nx_bsd_raw_packet_receive(NX_BSD_SOCKET *bsd_socket_ptr, NX_PACKET **packet
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_raw_packet_info_extract                      PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -9477,7 +9478,7 @@ NX_INTERFACE    *if_ptr = NX_NULL;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_set_socket_timed_wait_callback               PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -9539,7 +9540,7 @@ VOID  nx_bsd_socket_timed_wait_callback(NX_TCP_SOCKET *tcp_socket_ptr)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_packet_data_extract_offset                       PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -9707,7 +9708,7 @@ NX_PACKET   *working_packet_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_timer_entry                                  PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -9757,7 +9758,7 @@ VOID  nx_bsd_timer_entry(ULONG info)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_socket_set_inherited_settings                PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -9834,7 +9835,7 @@ UINT nx_bsd_socket_set_inherited_settings(UINT master_sock_id, UINT secondary_so
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_isspace                                      PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -9894,7 +9895,7 @@ static UINT nx_bsd_isspace(UCHAR c)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_islower                                      PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -9949,7 +9950,7 @@ static UINT nx_bsd_islower(UCHAR c)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_isdigit                                      PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -10003,7 +10004,7 @@ static UINT nx_bsd_isdigit(UCHAR c)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_isxdigit                                     PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -10069,7 +10070,7 @@ static UINT nx_bsd_isxdigit(UCHAR c)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    set_errno                                           PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -10130,7 +10131,7 @@ TX_THREAD       *current_thread_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    get_errno                                           PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -10190,7 +10191,7 @@ TX_THREAD       *current_thread_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_select_wakeup                                PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -10380,7 +10381,7 @@ NX_BSD_SOCKET_SUSPEND   *suspend_info;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_set_error_code                               PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -10492,7 +10493,7 @@ static VOID nx_bsd_set_error_code(NX_BSD_SOCKET *bsd_socket_ptr, UINT status_cod
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_udp_packet_received                          PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -10723,7 +10724,7 @@ NX_INTERFACE   *interface_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_tcp_syn_received_notify                      PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -10870,7 +10871,7 @@ NX_INTERFACE   *interface_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_tcp_create_listen_socket                     PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -11110,7 +11111,7 @@ INT                 secondary_sockID = NX_BSD_MAX_SOCKETS;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_tcp_pending_connection                       PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -11214,7 +11215,7 @@ UINT                         ret;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_find_interface_by_source_addr                PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -11309,7 +11310,7 @@ ULONG ipv6_addr[4];
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxd_bsd_ipv4_packet_send                           PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -12199,7 +12200,7 @@ ULONG                   destination_ip;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxd_bsd_ipv6_packet_send                           PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -12723,7 +12724,7 @@ NX_IP          *ip_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxd_bsd_swap_ipv6_extension_headers                PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -12823,7 +12824,7 @@ NX_IPV6_HEADER_OPTION           *option;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_pppoe_internal_sendto                        PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -13037,7 +13038,7 @@ NX_PACKET          *packet_ptr = NX_NULL;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_bsd_pppoe_packet_received                       PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -13146,7 +13147,7 @@ NX_BSD_SOCKET *bsd_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_bsd_hardware_internal_sendto                    PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -13337,7 +13338,7 @@ NX_PACKET          *packet_ptr = NX_NULL;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_bsd_hardware_packet_received                    PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -13445,7 +13446,7 @@ NX_BSD_SOCKET *bsd_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_bsd_ethernet_receive_notify                     PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yanwu Cai, Microsoft Corporation                                    */
@@ -13573,7 +13574,7 @@ NX_BSD_SOCKET *bsd_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    inet_pton                                           PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -13843,7 +13844,7 @@ struct  nx_bsd_in_addr ipv4_addr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    inet_ntop                                           PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -14063,7 +14064,7 @@ UINT   rt_size;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    inet_ntoa_internal                                  PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -14181,7 +14182,7 @@ UINT index = 0;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    getaddrinfo                                         PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -14799,7 +14800,7 @@ static struct nx_bsd_addrinfo default_hints = {0, AF_UNSPEC, 0, 0, 0, NX_NULL, N
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    freeaddrinfo                                        PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -14884,7 +14885,7 @@ CHAR *ai_canonname_ptr = NX_NULL;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    bsd_string_to_number                                PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -14945,7 +14946,7 @@ static INT bsd_string_to_number(const CHAR *string, UINT *number)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    getnameinfo                                         PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -15185,7 +15186,7 @@ const CHAR  *rt_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_bsd_set_service_list                             PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -15232,7 +15233,7 @@ VOID nx_bsd_set_service_list(struct NX_BSD_SERVICE_LIST *serv_list_ptr, ULONG se
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_bsd_string_length                               PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -15286,7 +15287,7 @@ int length = 0;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_bsd_fast_periodic_timer_entry                   PORTABLE C      */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -15338,7 +15339,7 @@ static VOID  _nx_bsd_fast_periodic_timer_entry(ULONG id)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    poll                                                PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Chaoqiong Xiao, Microsoft Corporation                               */

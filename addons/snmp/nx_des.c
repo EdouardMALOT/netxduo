@@ -1,5 +1,6 @@
 /***************************************************************************
  * Copyright (c) 2024 Microsoft Corporation 
+ * Copyright (c) 2025-present Eclipse ThreadX Contributors
  * 
  * This program and the accompanying materials are made available under the
  * terms of the MIT License which is available at
@@ -161,7 +162,7 @@ static ULONG right_half_bit_swap[16] =
 /*  FUNCTION                                               RELEASE        */ 
 /*                                                                        */ 
 /*    _nx_des_key_set                                     PORTABLE C      */ 
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -312,7 +313,7 @@ UINT    round;
 /*  FUNCTION                                               RELEASE        */ 
 /*                                                                        */ 
 /*    _nx_des_encrypt                                     PORTABLE C      */ 
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -370,7 +371,7 @@ UINT  _nx_des_encrypt(NX_DES *context, UCHAR source[8], UCHAR destination[8])
 /*  FUNCTION                                               RELEASE        */ 
 /*                                                                        */ 
 /*    _nx_des_decrypt                                     PORTABLE C      */ 
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -428,7 +429,7 @@ UINT  _nx_des_decrypt(NX_DES *context, UCHAR source[8], UCHAR destination[8])
 /*  FUNCTION                                               RELEASE        */ 
 /*                                                                        */ 
 /*    _nx_des_process_block                               PORTABLE C      */ 
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */

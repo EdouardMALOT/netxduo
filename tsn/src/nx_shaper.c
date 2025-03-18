@@ -1,5 +1,6 @@
 /***************************************************************************
  * Copyright (c) 2024 Microsoft Corporation 
+ * Copyright (c) 2025-present Eclipse ThreadX Contributors
  * 
  * This program and the accompanying materials are made available under the
  * terms of the MIT License which is available at
@@ -28,7 +29,7 @@
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_shaper_create                                    PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -141,7 +142,7 @@ NX_SHAPER_DRIVER_PARAMETER driver_request;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_shaper_delete                                    PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -221,7 +222,7 @@ UINT i;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_shaper_config                                    PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -287,7 +288,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_shaper_hw_queue_set                              PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -390,7 +391,7 @@ UCHAR i, insert_id;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_shaper_default_mapping_get                       PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -621,7 +622,7 @@ UCHAR hw_cbs_queue_number;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_shaper_current_mapping_get                       PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -695,7 +696,7 @@ UCHAR i, j;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_shaper_hw_queue_number_get                       PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -744,7 +745,7 @@ UINT nx_shaper_hw_queue_number_get(NX_INTERFACE *interface_ptr, UCHAR *hw_queue_
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_shaper_hw_cbs_queue_number_get                   PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -804,7 +805,7 @@ UCHAR i;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_shaper_port_rate_get                             PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -853,7 +854,7 @@ UINT nx_shaper_port_rate_get(NX_INTERFACE *interface_ptr, UINT *port_rate)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_shaper_mapping_set                               PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -932,7 +933,7 @@ UCHAR i;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_shaper_cbs_parameter_set                         PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -1037,7 +1038,7 @@ UINT                       status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_shaper_hw_queue_id_get                           PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -1107,7 +1108,7 @@ UCHAR  pcp = 0;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_shaper_tas_parameter_set                         PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -1340,7 +1341,7 @@ NX_SHAPER_FP_PARAMETER    *fp_parameter;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_shaper_express_queue_set                         PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -1404,7 +1405,7 @@ NX_INTERFACE *parent_interface;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_shaper_sdu_tx_time_get                           PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -1462,7 +1463,7 @@ UINT tmp;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_shaper_fp_parameter_set                          PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */

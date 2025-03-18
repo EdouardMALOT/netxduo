@@ -1,5 +1,6 @@
 /***************************************************************************
  * Copyright (c) 2024 Microsoft Corporation 
+ * Copyright (c) 2025-present Eclipse ThreadX Contributors
  * 
  * This program and the accompanying materials are made available under the
  * terms of the MIT License which is available at
@@ -189,7 +190,7 @@ UINT write_pcap_file(NX_PACKET *packet_ptr);
 /*  FUNCTION                                               RELEASE        */ 
 /*                                                                        */ 
 /*    _nx_ram_network_driver_set_pool                     PORTABLE C      */ 
-/*                                                           6.4.0        */ 
+/*                                                           6.4.3        */ 
 /*  AUTHOR                                                                */ 
 /*                                                                        */ 
 /*    Wenhui Xie, Microsoft Corporation                                   */
@@ -233,7 +234,7 @@ UINT _nx_ram_network_driver_set_pool(NX_PACKET_POOL *pool_ptr)
 /*  FUNCTION                                               RELEASE        */ 
 /*                                                                        */ 
 /*    _nx_ram_network_driver_reset                        PORTABLE C      */ 
-/*                                                           6.4.0        */ 
+/*                                                           6.4.3        */ 
 /*  AUTHOR                                                                */ 
 /*                                                                        */ 
 /*    Wenhui Xie, Microsoft Corporation                                   */ 
@@ -291,7 +292,7 @@ void _nx_ram_network_driver_reset(void)
 /*  FUNCTION                                               RELEASE        */ 
 /*                                                                        */ 
 /*    _nx_ram_network_driver_delay_entry                  PORTABLE C      */ 
-/*                                                           6.4.0        */ 
+/*                                                           6.4.3        */ 
 /*  AUTHOR                                                                */ 
 /*                                                                        */ 
 /*    Wenhui Xie, Microsoft Corporation                                   */ 
@@ -353,7 +354,7 @@ NX_IP_DRIVER *driver_req;
 /*  FUNCTION                                               RELEASE        */ 
 /*                                                                        */ 
 /*    _nx_ram_network_driver_timer_clean                  PORTABLE C      */ 
-/*                                                           6.4.0        */ 
+/*                                                           6.4.3        */ 
 /*  AUTHOR                                                                */ 
 /*                                                                        */ 
 /*    Wenhui Xie, Microsoft Corporation                                   */ 
@@ -403,7 +404,7 @@ VOID _nx_ram_network_driver_timer_clean(VOID)
 /*  FUNCTION                                               RELEASE        */ 
 /*                                                                        */ 
 /*    _nx_ram_network_driver_internal                     PORTABLE C      */ 
-/*                                                           6.4.0        */ 
+/*                                                           6.4.3        */ 
 /*  AUTHOR                                                                */ 
 /*                                                                        */ 
 /*    Wenhui Xie, Microsoft Corporation                                   */ 
@@ -1037,7 +1038,7 @@ USHORT          ether_type;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_ram_network_driver                              PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wenhui Xie, Microsoft Corporation                                   */
@@ -1546,7 +1547,7 @@ USHORT         ether_type;
 /*  FUNCTION                                               RELEASE        */ 
 /*                                                                        */ 
 /*    _nx_ram_network_driver_output                       PORTABLE C      */ 
-/*                                                           6.4.0        */ 
+/*                                                           6.4.3        */ 
 /*  AUTHOR                                                                */ 
 /*                                                                        */ 
 /*    Wenhui Xie, Microsoft Corporation                                   */ 
@@ -1817,7 +1818,7 @@ UINT        j;
 /*  FUNCTION                                               RELEASE        */ 
 /*                                                                        */ 
 /*    _nx_ram_network_driver_receive                      PORTABLE C      */ 
-/*                                                           6.4.0        */ 
+/*                                                           6.4.3        */ 
 /*  AUTHOR                                                                */ 
 /*                                                                        */ 
 /*    Wenhui Xie, Microsoft Corporation                                   */ 
@@ -1986,7 +1987,7 @@ UINT    packet_type;
 /*  FUNCTION                                               RELEASE        */ 
 /*                                                                        */ 
 /*    _nx_ram_network_driver_calculate_checksum           PORTABLE C      */ 
-/*                                                           6.4.0        */ 
+/*                                                           6.4.3        */ 
 /*  AUTHOR                                                                */ 
 /*                                                                        */ 
 /*    Wenhui Xie, Microsoft Corporation                                   */ 
@@ -2525,7 +2526,7 @@ NX_IPV6_HEADER         *ipv6_header_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    get_time_of_day                                    PORTABLE C       */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wenhui Xie, Microsoft Corporation                                   */
@@ -2588,7 +2589,7 @@ ULONG64     time;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    create_pcap_file                                     PORTABLE C     */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wenhui Xie, Microsoft Corporation                                   */
@@ -2653,7 +2654,7 @@ NX_PCAP_FILE_HEADER     pcap_file_header;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    write_pcap_file                                     PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wenhui Xie, Microsoft Corporation                                   */
@@ -2727,7 +2728,7 @@ ULONG                   data_length;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    close_pcap_file                                     PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wenhui Xie, Microsoft Corporation                                   */

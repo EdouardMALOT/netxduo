@@ -1,5 +1,6 @@
 /***************************************************************************
  * Copyright (c) 2024 Microsoft Corporation 
+ * Copyright (c) 2025-present Eclipse ThreadX Contributors
  * 
  * This program and the accompanying materials are made available under the
  * terms of the MIT License which is available at
@@ -72,7 +73,7 @@ static VOID _nx_rtcp_packet_receive_notify(NX_UDP_SOCKET *socket_ptr);
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_rtp_sender_create                             PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -134,7 +135,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtp_sender_create                               PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -328,7 +329,7 @@ UINT free_port;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_rtp_sender_delete                             PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -385,7 +386,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtp_sender_delete                              PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -452,7 +453,7 @@ UINT _nx_rtp_sender_delete(NX_RTP_SENDER *rtp_sender)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_rtp_sender_port_get                           PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -514,7 +515,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtp_sender_port_get                            PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -565,7 +566,7 @@ UINT _nx_rtp_sender_port_get(NX_RTP_SENDER *rtp_sender, UINT *rtp_port, UINT *rt
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_rtp_sender_session_create                     PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -641,7 +642,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtp_sender_session_create                      PORTABLE C       */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -777,7 +778,7 @@ UINT _nx_rtp_sender_session_create(NX_RTP_SENDER *rtp_sender, NX_RTP_SESSION *se
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_rtp_sender_session_delete                     PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -835,7 +836,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtp_sender_session_delete                      PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -891,7 +892,7 @@ UINT _nx_rtp_sender_session_delete(NX_RTP_SESSION *session)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_rtp_sender_rtcp_receiver_report_callback_set   PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Ting Zhu, Microsoft Corporation                                     */
@@ -952,7 +953,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtp_sender_rtcp_receiver_report_callback_set    PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Ting Zhu, Microsoft Corporation                                     */
@@ -1001,7 +1002,7 @@ UINT _nx_rtp_sender_rtcp_receiver_report_callback_set(NX_RTP_SENDER *rtp_sender,
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_rtp_sender_rtcp_sdes_callback_set              PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Ting Zhu, Microsoft Corporation                                     */
@@ -1060,7 +1061,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtp_sender_rtcp_sdes_callback_set               PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Ting Zhu, Microsoft Corporation                                     */
@@ -1109,7 +1110,7 @@ UINT _nx_rtp_sender_rtcp_sdes_callback_set(NX_RTP_SENDER *rtp_sender, UINT (*rtc
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_rtp_sender_session_packet_allocate            PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -1170,7 +1171,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtp_sender_session_packet_allocate             PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -1222,7 +1223,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_rtp_sender_session_packet_send                PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -1294,7 +1295,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtp_sender_session_packet_send                 PORTABLE C       */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -1554,7 +1555,7 @@ UINT           fragmentation = NX_FALSE;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_rtp_sender_session_sequence_number_get        PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -1614,7 +1615,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtp_sender_session_sequence_number_get         PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -1661,7 +1662,7 @@ UINT _nx_rtp_sender_session_sequence_number_get(NX_RTP_SESSION *session, UINT *s
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_rtp_sender_session_sample_factor_set          PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -1721,7 +1722,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtp_sender_session_sample_factor_set           PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -1780,7 +1781,7 @@ UINT _nx_rtp_sender_session_sample_factor_set(NX_RTP_SESSION *session, UINT fact
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_rtp_sender_session_ssrc_get                   PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -1839,7 +1840,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtp_sender_session_ssrc_get                    PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -1886,7 +1887,7 @@ UINT _nx_rtp_sender_session_ssrc_get(NX_RTP_SESSION *session, ULONG *ssrc)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_rtp_sender_session_vlan_priority_set          PORTABLE C       */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -1953,7 +1954,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_rtp_sender_session_vlan_priority_set          PORTABLE C       */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -2010,7 +2011,7 @@ UINT _nx_rtp_sender_session_vlan_priority_set(NX_RTP_SESSION *session, UINT vlan
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtp_sender_cleanup                             PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -2065,7 +2066,7 @@ UINT _nx_rtp_sender_cleanup(NX_RTP_SENDER *rtp_sender)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtp_sender_session_find                         PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Ting Zhu, Microsoft Corporation                                     */
@@ -2124,7 +2125,7 @@ NX_RTP_SESSION *start = rtp_sender -> nx_rtp_sender_session_created_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtp_sender_session_link                         PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Ting Zhu, Microsoft Corporation                                     */
@@ -2190,7 +2191,7 @@ NX_RTP_SESSION *tail;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtp_sender_session_unlink                       PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Ting Zhu, Microsoft Corporation                                     */
@@ -2262,7 +2263,7 @@ NX_RTP_SESSION *pre;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtcp_packet_process                             PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Ting Zhu, Microsoft Corporation                                     */
@@ -2386,7 +2387,7 @@ UCHAR          *end;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtcp_packet_rr_process                          PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Ting Zhu, Microsoft Corporation                                     */
@@ -2491,7 +2492,7 @@ NX_RTP_SESSION         *session;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtcp_packet_sdes_process                        PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Ting Zhu, Microsoft Corporation                                     */
@@ -2598,7 +2599,7 @@ INT                 count;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtcp_sr_data_append                             PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Ting Zhu, Microsoft Corporation                                     */
@@ -2670,7 +2671,7 @@ NX_RTCP_SR rtcp_sr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtcp_sdes_data_append                           PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Ting Zhu, Microsoft Corporation                                     */
@@ -2802,7 +2803,7 @@ SDES item format for CNAME:
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtcp_packet_send                                PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Ting Zhu, Microsoft Corporation                                     */
@@ -2896,7 +2897,7 @@ UINT       current_time = tx_time_get();
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtcp_packet_receive_notify                      PORTABLE C      */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Ting Zhu, Microsoft Corporation                                     */
@@ -2964,7 +2965,7 @@ NX_RTP_SENDER *rtp_sender;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_rtp_sender_session_jpeg_send                  PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -3032,7 +3033,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtp_sender_session_jpeg_send                   PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -3493,7 +3494,7 @@ NX_PACKET *send_packet = NX_NULL;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_rtp_sender_session_h264_send                  PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -3561,7 +3562,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtp_sender_session_h264_send                   PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -3915,7 +3916,7 @@ NX_PACKET *send_packet = NX_NULL;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nxe_rtp_sender_session_aac_send                   PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */
@@ -3983,7 +3984,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_rtp_sender_session_aac_send                    PORTABLE C       */
-/*                                                           6.3.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Haiqing Zhao, Microsoft Corporation                                 */

@@ -1,5 +1,6 @@
 /***************************************************************************
  * Copyright (c) 2024 Microsoft Corporation 
+ * Copyright (c) 2025-present Eclipse ThreadX Contributors
  * 
  * This program and the accompanying materials are made available under the
  * terms of the MIT License which is available at
@@ -36,7 +37,7 @@ static NX_MSRP_ATTRIBUTE msrp_attribute_array[NX_MSRP_ATTRIBUTE_ARRAY_MAX_SIZE];
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_msrp_init                                        PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wen Wang,  Microsoft Corporation                                    */
@@ -90,7 +91,7 @@ UINT nx_msrp_init(NX_MSRP *msrp_ptr)
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_msrp_attribute_find                              PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wen Wang,  Microsoft Corporation                                    */
@@ -370,7 +371,7 @@ NX_MRP_ATTRIBUTE *attribute_head = participant -> inused_head;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_msrp_register_stream_request                     PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wen Wang,  Microsoft Corporation                                    */
@@ -463,7 +464,7 @@ UCHAR             mrp_event;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_msrp_register_attach_request                     PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wen Wang,  Microsoft Corporation                                    */
@@ -539,7 +540,7 @@ UCHAR             attribute_type = NX_MSRP_TALKER_LISTENER_VECTOR;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_msrp_deregister_stream_request                   PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wen Wang,  Microsoft Corporation                                    */
@@ -607,7 +608,7 @@ UCHAR             attribute_type = NX_MSRP_TALKER_ADVERTISE_VECTOR;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_msrp_deregister_attach_request                   PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wen Wang,  Microsoft Corporation                                    */
@@ -677,7 +678,7 @@ UCHAR             attribute_type = NX_MSRP_TALKER_LISTENER_VECTOR;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_msrp_register_domain_request                     PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wen Wang,  Microsoft Corporation                                    */
@@ -767,7 +768,7 @@ UINT              status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_msrp_deregister_domain_request                   PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wen Wang,  Microsoft Corporation                                    */
@@ -839,7 +840,7 @@ UINT              status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_msrp_register_stream_indication                  PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wen Wang,  Microsoft Corporation                                    */
@@ -925,7 +926,7 @@ NX_MRP_EVENT_CALLBACK event_callback;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_msrp_deregister_stream_indication                PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wen Wang,  Microsoft Corporation                                    */
@@ -994,7 +995,7 @@ UCHAR *stream_id;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_msrp_register_attach_indication                  PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wen Wang,  Microsoft Corporation                                    */
@@ -1049,7 +1050,7 @@ NX_MRP_EVENT_CALLBACK event_callback;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_msrp_deregister_attach_indication                PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wen Wang,  Microsoft Corporation                                    */
@@ -1104,7 +1105,7 @@ NX_MRP_EVENT_CALLBACK event_callback;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_msrp_register_domain_indication                  PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wen Wang,  Microsoft Corporation                                    */
@@ -1171,7 +1172,7 @@ NX_MSRP_DOMAIN *domain;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_msrp_deregister_domain_indication                PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wen Wang,  Microsoft Corporation                                    */
@@ -1237,7 +1238,7 @@ NX_MSRP_DOMAIN *domain;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_msrp_indication_process                          PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wen Wang,  Microsoft Corporation                                    */
@@ -1396,7 +1397,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_msrp_mrpdu_parse                                 PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wen Wang,  Microsoft Corporation                                    */
@@ -1650,7 +1651,7 @@ UCHAR                    *data_ptr = packet_ptr -> nx_packet_data_start;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_msrp_mrpdu_pack_attribute                        PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wen Wang,  Microsoft Corporation                                    */
@@ -1930,7 +1931,7 @@ USHORT attribute_list_length;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_msrp_mrpdu_pack                                  PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Wen Wang,  Microsoft Corporation                                    */

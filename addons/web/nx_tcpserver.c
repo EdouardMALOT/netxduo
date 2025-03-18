@@ -1,5 +1,6 @@
 /***************************************************************************
  * Copyright (c) 2024 Microsoft Corporation 
+ * Copyright (c) 2025-present Eclipse ThreadX Contributors
  * 
  * This program and the accompanying materials are made available under the
  * terms of the MIT License which is available at
@@ -44,7 +45,7 @@ static VOID _nx_tcpserver_thread_entry(ULONG tcpserver_address);
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_tcpserver_session_allocate                       PORTABLE C     */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -127,7 +128,7 @@ NX_TCP_SOCKET  *socket_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_tcpserver_relisten                               PORTABLE C     */
-/*                                                           6.1.9        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -215,7 +216,7 @@ NX_TCP_SESSION *session_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_tcpserver_create                                  PORTABLE C     */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -624,7 +625,7 @@ NX_SECURE_TLS_SESSION* tls_session;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_tcpserver_start                                  PORTABLE C     */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -703,7 +704,7 @@ NX_TCP_SESSION *session_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_tcpserver_connect_present                        PORTABLE C     */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -756,7 +757,7 @@ NX_TCPSERVER *server_ptr = socket_ptr -> nx_tcp_socket_reserved_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_tcpserver_data_present                           PORTABLE C     */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -805,7 +806,7 @@ NX_TCPSERVER *server_ptr = socket_ptr -> nx_tcp_socket_reserved_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_tcpserver_disconnect_present                     PORTABLE C     */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -854,7 +855,7 @@ NX_TCPSERVER *server_ptr = socket_ptr -> nx_tcp_socket_reserved_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_tcpserver_timeout                                PORTABLE C     */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -1059,7 +1060,7 @@ NX_TCP_SESSION *session_ptr = NX_NULL;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_tcpserver_data_process                           PORTABLE C     */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -1131,7 +1132,7 @@ NX_TCP_SOCKET  *socket_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_tcpserver_disconnect_process                     PORTABLE C     */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -1210,7 +1211,7 @@ NX_TCP_SOCKET  *socket_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_tcpserver_timeout_process                        PORTABLE C     */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -1302,7 +1303,7 @@ NX_TCP_SESSION *session_ptr;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_tcpserver_thread_entry                           PORTABLE C     */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -1407,7 +1408,7 @@ NX_TCPSERVER   *server_ptr = (NX_TCPSERVER *)tcpserver_address;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_tcpserver_stop                                   PORTABLE C     */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
@@ -1478,7 +1479,7 @@ UINT status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    _nx_tcpserver_delete                                 PORTABLE C     */
-/*                                                           6.1          */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */

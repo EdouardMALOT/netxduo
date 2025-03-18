@@ -1,5 +1,6 @@
 /***************************************************************************
  * Copyright (c) 2024 Microsoft Corporation 
+ * Copyright (c) 2025-present Eclipse ThreadX Contributors
  * 
  * This program and the accompanying materials are made available under the
  * terms of the MIT License which is available at
@@ -29,7 +30,7 @@ NX_MVRP_ATTRIBUTE mvrp_attribute_array[NX_MVRP_ATTRIBUTE_ARRAY_MAX_SIZE];
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_mvrp_indication_process                          PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -91,7 +92,7 @@ NX_MVRP *mvrp = (NX_MVRP *)participant;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_mvrp_mrpdu_unpack                                PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -285,7 +286,7 @@ UCHAR             three_packed_event, first_event, second_event, third_event;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_mvrp_mrpdu_pack                                  PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -461,7 +462,7 @@ USHORT            i;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_mvrp_attribute_find                              PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -529,7 +530,7 @@ NX_MVRP_ATTRIBUTE *mvrp_attribute;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_mvrp_attribute_insert                            PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -623,7 +624,7 @@ USHORT            vlan_id = ((NX_MVRP_ATTRIBUTE *)attribute) -> vlan_id;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_mvrp_attribute_get                               PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -703,7 +704,7 @@ UINT              status;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_mvrp_action_request                              PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
@@ -788,7 +789,7 @@ UCHAR             mrp_event;
 /*  FUNCTION                                               RELEASE        */
 /*                                                                        */
 /*    nx_mvrp_init                                        PORTABLE C      */
-/*                                                           6.4.0        */
+/*                                                           6.4.3        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yajun Xia, Microsoft Corporation                                    */
