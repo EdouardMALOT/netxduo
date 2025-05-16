@@ -1,3 +1,6 @@
 #! /bin/bash
 
-$(dirname `realpath $0`)/../test/cmake/netxduo/run.sh build all
+SCRIPT_DIR=$(dirname "$(realpath "$0")")
+RUN_SCRIPT="$SCRIPT_DIR/../test/cmake/netxduo/run.sh"
+
+. ./func_build.sh
