@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
 # Set up the project
 project(netxduo
     LANGUAGES C ASM
+    VERSION 6.4.3.1
 )    
 
 option(NXD_ENABLE_FILE_SERVERS "Includes a dependency on FileX to support 'server' protocol handlers" ON)
@@ -18,6 +19,8 @@ endif()
 # Define our target library and an alias for consumers
 add_library(${PROJECT_NAME})
 add_library("azrtos::${PROJECT_NAME}" ALIAS ${PROJECT_NAME})
+
+set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${PROJECT_VERSION})
 
 # Define any required dependencies between this library and others
 target_link_libraries(${PROJECT_NAME} PUBLIC "azrtos::threadx")
