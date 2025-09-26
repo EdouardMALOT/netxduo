@@ -453,7 +453,7 @@ ULONG       count;
                     /* Yes, call the PPP packet processing routine.  */
                     _nx_ppp_receive_packet_process(ppp_ptr, packet_ptr);
                 }
-            } while (packet_ptr)
+            } while (packet_ptr);
         }
 
 #ifdef NX_PPP_PPPOE_ENABLE
