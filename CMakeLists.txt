@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
 # Set up the project
 project(netxduo
     LANGUAGES C ASM
-    VERSION 6.4.3.1
+    VERSION 6.4.3.2
 )    
 
 option(NXD_ENABLE_FILE_SERVERS "Includes a dependency on FileX to support 'server' protocol handlers" ON)
