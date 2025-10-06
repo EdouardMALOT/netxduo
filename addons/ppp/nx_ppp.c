@@ -433,24 +433,27 @@ ULONG       count;
         /* Check for PPP Packet receive event.  */
         if (ppp_events & NX_PPP_EVENT_PACKET_RECEIVE)
         { 
-
-            /* Pickup the next PPP packet from serial port to process. This is called whether an event was set or not
-               simply to handle the case when a non-PPP frame is received.  */
-            _nx_ppp_receive_packet_get(ppp_ptr, &packet_ptr);
-
-            /* Now determine if there is a packet to process.  */
-            if (packet_ptr)
+            /* Temporary Legrand workaround of the ticket https://github.com/eclipse-threadx/netxduo/issues/340 */
+            do
             {
+                /* Pickup the next PPP packet from serial port to process. This is called whether an event was set or not
+                   simply to handle the case when a non-PPP frame is received.  */
+                _nx_ppp_receive_packet_get(ppp_ptr, &packet_ptr);
 
-#ifdef NX_PPP_DEBUG_LOG_ENABLE
+                /* Now determine if there is a packet to process.  */
+                if (packet_ptr)
+                {
 
-                /* Insert an entry into the PPP frame debug log.  */
-                _nx_ppp_debug_log_capture(ppp_ptr, 'R', packet_ptr);
-#endif
+    #ifdef NX_PPP_DEBUG_LOG_ENABLE
 
-                /* Yes, call the PPP packet processing routine.  */
-                _nx_ppp_receive_packet_process(ppp_ptr, packet_ptr);
-            }
+                    /* Insert an entry into the PPP frame debug log.  */
+                    _nx_ppp_debug_log_capture(ppp_ptr, 'R', packet_ptr);
+    #endif
+
+                    /* Yes, call the PPP packet processing routine.  */
+                    _nx_ppp_receive_packet_process(ppp_ptr, packet_ptr);
+                }
+            } while (packet_ptr);
         }
 
 #ifdef NX_PPP_PPPOE_ENABLE
