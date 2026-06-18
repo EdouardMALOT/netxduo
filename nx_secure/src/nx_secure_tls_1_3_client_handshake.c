@@ -567,6 +567,9 @@ const UCHAR    *server_random;
                 /* We can now clear the flag since this is the last specific certificate message sent. */
                 tls_session -> nx_secure_tls_client_certificate_requested = 0;
 
+                /* Latch the sticky companion — same rationale as in nx_secure_tls_client_handshake.c. */
+                tls_session -> nx_secure_tls_did_send_client_cert = NX_TRUE;
+
                 /* Allocate packet for CertificateVerify. */
                 status = _nx_secure_tls_allocate_handshake_packet(tls_session, packet_pool, &send_packet, wait_option);
 

@@ -195,6 +195,10 @@ UINT temp_status;
 #ifndef NX_SECURE_TLS_CLIENT_DISABLED
     /* The state of the client handshake if this is a client socket. */
     session_ptr -> nx_secure_tls_client_state = NX_SECURE_TLS_CLIENT_STATE_IDLE;
+
+    /* Clear the sticky "did mutual auth happen" indicator so a reused session reports the next
+       handshake's actual state, not the previous one. */
+    session_ptr -> nx_secure_tls_did_send_client_cert = NX_FALSE;
 #endif
 
     /* Indicate no messages to be hashed. */

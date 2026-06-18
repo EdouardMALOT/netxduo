@@ -1307,6 +1307,12 @@ typedef struct NX_SECURE_TLS_SESSION_STRUCT
 
     /* If the remote TLS Server requests a certificate, save that state here so we can send the cert. */
     USHORT nx_secure_tls_client_certificate_requested;
+
+    /* Sticky companion to the above: stays set after the handshake finishes so callers can tell
+       mutual TLS happened (we actually sent a non-empty client Certificate + CertificateVerify)
+       vs server-only TLS (broker didn't ask, or we sent an empty cert). The transient flag above
+       is cleared before sending CertificateVerify, making it unusable post-handshake. */
+    USHORT nx_secure_tls_did_send_client_cert;
 #endif
 
     /* Define the link between other TLS structures created by the application.  */

@@ -483,6 +483,13 @@ const NX_CRYPTO_METHOD
                 /* We can now clear the flag since this is the last specific certificate message sent. */
                 tls_session -> nx_secure_tls_client_certificate_requested = 0;
 
+                /* Latch the sticky companion: we're about to send CertificateVerify, which only happens
+                   when a real local cert was sent in the preceding Certificate message (the empty-cert
+                   path resets nx_secure_tls_client_certificate_requested earlier in
+                   _nx_secure_tls_send_certificate, so we never enter this branch). Surviving past the
+                   handshake, this flag lets observers (diagnostics, logs) tell mutual TLS from server-only. */
+                tls_session -> nx_secure_tls_did_send_client_cert = NX_TRUE;
+
                 /* Allocate packet for CertificateVerify. */
                 status = _nx_secure_tls_allocate_handshake_packet(tls_session, packet_pool, &send_packet, wait_option);
 
