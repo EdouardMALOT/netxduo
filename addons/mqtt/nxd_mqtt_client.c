@@ -2801,6 +2801,7 @@ VOID _nxd_mqtt_client_connection_end(NXD_MQTT_CLIENT *client_ptr, ULONG wait_opt
     {
         nx_secure_tls_session_end(&(client_ptr -> nxd_mqtt_tls_session), wait_option);
         nx_secure_tls_session_delete(&(client_ptr -> nxd_mqtt_tls_session));
+        client_ptr -> nxd_mqtt_client_use_tls = 0;
     }
 #endif
     nx_tcp_socket_disconnect(&(client_ptr -> nxd_mqtt_client_socket), wait_option);
