@@ -96,6 +96,13 @@ UINT  status;
 UINT sign_algs_length;
 UINT sign_alg;
 UINT expected_sign_alg = 0;
+#if (NX_SECURE_TLS_TLS_1_3_ENABLED)
+UINT j;
+UINT pss_alg;
+/* rsa_pss_rsae_sha256/384/512, in our order of preference: sha256 is the RFC 8446 §9.1
+   mandatory-to-implement scheme and the cheapest; the others cover servers that exclude it. */
+static const UINT _nx_pss_rsae_preference[] = {0x0804u, 0x0805u, 0x0806u};
+#endif
 #endif
 
 #if (NX_SECURE_TLS_TLS_1_3_ENABLED)
@@ -137,9 +144,9 @@ UINT extension_type;
 
             /* TLS 1.3 + RSA cert: announce RSASSA-PSS (RFC 8446 §4.2.3 — PKCS#1 v1.5 is banned for
              * CertificateVerify in TLS 1.3). The send_certificate_verify path builds the EMSA-PSS-ENCODE
-             * via _nx_crypto_rsa_pss_sign. We pick rsa_pss_rsae_sha256 (0x0804) unconditionally — it's
-             * the only PSS sigalg our nx_crypto_rsa.c currently supports for signing, and any modern
-             * broker (mosquitto/OpenSSL) advertises it in CertificateRequest.sig_algs. */
+             * via _nx_crypto_rsa_pss_sign. Default to rsa_pss_rsae_sha256 (0x0804) — the RFC 8446 §9.1
+             * mandatory-to-implement scheme; the sig_algs match loop below may upgrade this to
+             * sha384/sha512 when the server's CertificateRequest doesn't offer sha256. */
             if (local_certificate -> nx_secure_x509_public_algorithm == NX_SECURE_TLS_X509_TYPE_RSA)
             {
                 expected_cert_type = NX_SECURE_TLS_CERT_TYPE_RSA_SIGN;
@@ -296,6 +303,35 @@ UINT extension_type;
 
         /* Extract the signature algorithms. */
         sign_alg = NX_SECURE_TLS_HASH_ALGORITHM_NONE;
+
+#if (NX_SECURE_TLS_TLS_1_3_ENABLED)
+        if (tls_session -> nx_secure_tls_1_3 && (expected_cert_type == NX_SECURE_TLS_CERT_TYPE_RSA_SIGN))
+        {
+            /* TLS 1.3 + RSA key: any rsa_pss_rsae_* scheme fits, so refine expected_sign_alg to the
+               most-preferred scheme the server actually offers. The generic match loop below then
+               validates and records the choice; if the server offers none of them, expected_sign_alg
+               keeps its sha256 default and the loop rejects the handshake as before. */
+            pss_alg = NX_SECURE_TLS_HASH_ALGORITHM_NONE;
+            for (j = 0; (j < (UINT)(sizeof(_nx_pss_rsae_preference) / sizeof(_nx_pss_rsae_preference[0]))) &&
+                        (pss_alg == NX_SECURE_TLS_HASH_ALGORITHM_NONE); j++)
+            {
+                for (i = 0; i < sign_algs_length; i += 2)
+                {
+                    if ((UINT)((packet_buffer[length + i] << 8) + packet_buffer[length + i + 1]) == _nx_pss_rsae_preference[j])
+                    {
+                        pss_alg = _nx_pss_rsae_preference[j];
+                        break;
+                    }
+                }
+            }
+
+            if (pss_alg != NX_SECURE_TLS_HASH_ALGORITHM_NONE)
+            {
+                expected_sign_alg = pss_alg;
+            }
+        }
+#endif
+
         for (i = 0; i < sign_algs_length; i += 2)
         {
             /* Look for a type we support. */
