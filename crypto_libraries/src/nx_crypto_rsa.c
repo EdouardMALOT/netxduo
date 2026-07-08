@@ -873,7 +873,7 @@ static const UCHAR _pss_zero8[8] = {0, 0, 0, 0, 0, 0, 0, 0};
      * as the existing signature paths on this device. */
     for (i = 0u; i < s_len; i++)
     {
-        salt[i] = (UCHAR)(NX_CRYPTO_RAND() & 0xFFu);
+        salt[i] = (UCHAR)((UINT)NX_CRYPTO_RAND() & 0xFFu);
     }
 
     /* Steps 5-6 – H = Hash(0x00^8 || mHash || salt). Write directly into
