@@ -2203,6 +2203,7 @@ UINT       status;
 UCHAR      packet_type;
 UINT       remaining_length;
 UINT       packet_consumed;
+UINT       packet_invalid;
 ULONG      offset;
 ULONG      bytes_copied;
 ULONG      packet_length;
@@ -2275,6 +2276,7 @@ ULONG      packet_length;
         }
 
         packet_consumed = NX_FALSE;
+        packet_invalid = NX_FALSE;
         while (packet_ptr)
         {
             /* Parse the incoming packet. */
@@ -2317,7 +2319,17 @@ ULONG      packet_length;
                 break;
 
             case MQTT_CONTROL_PACKET_TYPE_PUBLISH:
-                packet_consumed = _nxd_mqtt_process_publish(client_ptr, packet_ptr);
+                status = _nxd_mqtt_process_publish(client_ptr, packet_ptr);
+                if (status == NX_TRUE)
+                {
+                    packet_consumed = NX_TRUE;
+                }
+                else if (status == NXD_MQTT_INVALID_PACKET)
+                {
+
+                    /* Malformed PUBLISH. Stop parsing this chain; it is released below. */
+                    packet_invalid = NX_TRUE;
+                }
                 break;
 
             case MQTT_CONTROL_PACKET_TYPE_PUBACK:
@@ -2356,7 +2368,7 @@ ULONG      packet_length;
                 break;
             }
 
-            if (packet_consumed)
+            if (packet_consumed || packet_invalid)
             {
                 break;
             }
